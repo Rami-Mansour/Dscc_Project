@@ -12,6 +12,10 @@ public interface LibraryService extends Remote {
 
     List<String> viewAllBooks()
             throws RemoteException;
+
+    String issueBook(String bookId, String studentName)
+            throws RemoteException;
+
+    List<String> viewIssuedBookHistory()
+            throws RemoteException;
 }
-
-

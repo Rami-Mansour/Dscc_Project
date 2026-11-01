@@ -25,7 +25,9 @@ public class LibraryClient {
                 System.out.println("1. Add Book");
                 System.out.println("2. Search Book");
                 System.out.println("3. View All Available Books");
-                System.out.println("4. Exit");
+                System.out.println("4. Issue Book");
+                System.out.println("5. View Issued Book History");
+                System.out.println("6. Exit");
                 System.out.print("Enter your choice: ");
 
                 choice = scanner.nextInt();
@@ -76,8 +78,36 @@ public class LibraryClient {
                         }
 
                         break;
-
                     case 4:
+
+                        System.out.print("Enter Book ID: ");
+                        String issueBookId = scanner.nextLine();
+
+                        System.out.print("Enter Student Name: ");
+                        String studentName = scanner.nextLine();
+
+                        String issueResult = service.issueBook(issueBookId, studentName);
+
+                        System.out.println(issueResult);
+
+                        break;
+
+                    case 5:
+
+                        List<String> history = service.viewIssuedBookHistory();
+
+                        if (history.isEmpty()) {
+                            System.out.println("No issued books history.");
+                        } else {
+                            System.out.println("\nIssued Books History:");
+
+                            for (String record : history) {
+                                System.out.println(record);
+                            }
+                        }
+
+                        break;
+                    case 6:
 
                         System.out.println("Exiting Library System...");
                         break;
@@ -88,7 +118,7 @@ public class LibraryClient {
 
                 }
 
-            } while (choice != 4);
+            } while (choice != 6);
 
             scanner.close();
 

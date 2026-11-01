@@ -81,6 +81,7 @@ public class LibraryServiceImpl extends UnicastRemoteObject
     }
 
     // Issues a book to a student
+    @Override
     public String issueBook(String bookId, String studentName)
             throws RemoteException {
 
@@ -110,7 +111,9 @@ public class LibraryServiceImpl extends UnicastRemoteObject
     }
 
     // Returns the history of issued books
-    public List<String> viewIssuedBookHistory() {
+    @Override
+    public List<String> viewIssuedBookHistory() 
+            throws RemoteException {
 
         // Return all issuing records
         return new ArrayList<>(issuedBookHistory);
